@@ -1,0 +1,88 @@
+import React, { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { getAllCourses, deleteCourse, enrollStudent } from '../api/api';
+import { AuthContext } from '../components/AuthProvider';
+
+const CourseList = () => {
+  const { user, role } = useContext(AuthContext);
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchCourses();
+  }, []);
+
+  const fetchCourses = async () => {
+    try {
+      const response = await getAllCourses();
+      setCourses(response.data.content);
+    } catch (error) {
+      console.error('Failed to fetch courses:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleEnroll = async (courseId) => {
+    try {
+      if (user && user.id) { // ✅ Corrected: Check if user and user.id exist
+        if (window.confirm('Are you sure you want to enroll in this course?')) {
+          await enrollStudent(courseId, user.id);
+          alert('Enrolled successfully!');
+        }
+      } else {
+        alert('You must be logged in to enroll in a course.');
+      }
+    } catch (error) {
+      console.error('Enrollment failed:', error.response?.data || error.message);
+      alert('Enrollment failed. ' + (error.response?.data?.message || 'Please try again.'));
+    }
+  };
+
+  const handleDelete = async (courseId) => {
+    try {
+      await deleteCourse(courseId);
+      fetchCourses();
+      alert('Course deleted successfully!');
+    } catch (error) {
+      console.error('Failed to delete course:', error);
+      alert('Failed to delete course. ' + (error.response?.data?.message || 'Please try again.'));
+    }
+  };
+
+  if (loading) return <div>Loading courses...</div>;
+
+  return (
+    <div>
+      <h2>Courses</h2>
+      {role === 'INSTRUCTOR' && (
+        <Link to="/instructor/courses/create" style={{ display: 'block', marginBottom: '20px' }}>
+          <button>Add New Course</button>
+        </Link>
+      )}
+      <ul>
+        {courses.map(course => (
+          <li key={course.id} style={{ border: '1px solid #ccc', margin: '10px', padding: '10px' }}>
+            <h3>{course.title}</h3>
+            <p>{course.description}</p>
+            <p>Category: {course.category}</p>
+            <p>Price: ${course.price}</p>
+            <p>Instructor: {course.instructorName}</p>
+            <Link to={`/courses/${course.id}/lessons`} style={{ marginRight: '10px' }}>View Lessons</Link>
+            {role === 'STUDENT' && user && ( // ✅ Corrected: Only show enroll button if user is not null
+              <button onClick={() => handleEnroll(course.id)}>Enroll</button>
+            )}
+            {role === 'INSTRUCTOR' && (
+              <>
+                <Link to={`/instructor/courses/${course.id}/edit`} style={{ marginRight: '10px' }}>Edit</Link>
+                <button onClick={() => handleDelete(course.id)}>Delete</button>
+              </>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default CourseList;
