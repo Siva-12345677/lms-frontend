@@ -75,6 +75,7 @@ const Signup = () => {
               <button type="submit" className="btn">Sign Up</button>
             </form>
             {message && <div className={message.includes('Error') ? 'error' : 'success'}>{message}</div>}
+            }
           </div>
         </div>
       </div>
