@@ -30,19 +30,54 @@ const Signup = () => {
 
   return (
     <div>
-      <h2>Signup</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="username" placeholder="Username" onChange={handleChange} required />
-        <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
-        <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-        <input type="text" name="fullName" placeholder="Full Name" onChange={handleChange} required />
-        <select name="role" onChange={handleChange} value={user.role}>
-          <option value="STUDENT">Student</option>
-          <option value="INSTRUCTOR">Instructor</option>
-        </select>
-        <button type="submit">Sign Up</button>
-      </form>
-      {message && <p>{message}</p>}
+      <div className="container">
+        <div className="flex justify-center">
+          <div>
+            <h2>Sign Up</h2>
+            <form onSubmit={handleSubmit}>
+              <label>Username</label>
+              <input 
+                type="text" 
+                name="username" 
+                placeholder="Choose a username" 
+                onChange={handleChange} 
+                required 
+              />
+              <label>Password</label>
+              <input 
+                type="password" 
+                name="password" 
+                placeholder="Create a password" 
+                onChange={handleChange} 
+                required 
+              />
+              <label>Email</label>
+              <input 
+                type="email" 
+                name="email" 
+                placeholder="Enter your email" 
+                onChange={handleChange} 
+                required 
+              />
+              <label>Full Name</label>
+              <input 
+                type="text" 
+                name="fullName" 
+                placeholder="Enter your full name" 
+                onChange={handleChange} 
+                required 
+              />
+              <label>Role</label>
+              <select name="role" onChange={handleChange} value={user.role}>
+                <option value="STUDENT">Student</option>
+                <option value="INSTRUCTOR">Instructor</option>
+              </select>
+              <button type="submit" className="btn">Sign Up</button>
+            </form>
+            {message && <div className={message.includes('Error') ? 'error' : 'success'}>{message}</div>}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

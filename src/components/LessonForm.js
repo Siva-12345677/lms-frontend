@@ -28,41 +28,53 @@ const LessonForm = ({ onSubmit, initialData }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="title"
-        placeholder="Lesson Title"
-        value={formData.title}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="url"
-        name="contentUrl"
-        placeholder="Content URL (e.g., video link)"
-        value={formData.contentUrl}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="number"
-        name="duration"
-        placeholder="Duration (in minutes)"
-        value={formData.duration}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="number"
-        name="lessonOrder"
-        placeholder="Lesson Order"
-        value={formData.lessonOrder}
-        onChange={handleChange}
-        required
-      />
-      <button type="submit">Save Lesson</button>
-    </form>
+    <div className="container">
+      <form onSubmit={handleSubmit}>
+        <label>Lesson Title</label>
+        <input
+          type="text"
+          name="title"
+          placeholder="Enter lesson title"
+          value={formData.title}
+          onChange={handleChange}
+          required
+        />
+        
+        <label>Content URL</label>
+        <input
+          type="url"
+          name="contentUrl"
+          placeholder="Enter content URL (e.g., video link)"
+          value={formData.contentUrl}
+          onChange={handleChange}
+          required
+        />
+        
+        <label>Duration (minutes)</label>
+        <input
+          type="number"
+          name="duration"
+          placeholder="Enter duration in minutes"
+          value={formData.duration}
+          onChange={handleChange}
+          min="1"
+          required
+        />
+        
+        <label>Lesson Order</label>
+        <input
+          type="number"
+          name="lessonOrder"
+          placeholder="Enter lesson order number"
+          value={formData.lessonOrder}
+          onChange={handleChange}
+          min="1"
+          required
+        />
+        
+        <button type="submit" className="btn">Save Lesson</button>
+      </form>
+    </div>
   );
 };
 

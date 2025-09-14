@@ -32,40 +32,52 @@ const CourseForm = ({ onSubmit, initialData }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="title"
-        placeholder="Course Title"
-        value={formData.title}
-        onChange={handleChange}
-        required
-      />
-      <textarea
-        name="description"
-        placeholder="Description"
-        value={formData.description}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="text"
-        name="category"
-        placeholder="Category"
-        value={formData.category}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="number"
-        name="price"
-        placeholder="Price"
-        value={formData.price}
-        onChange={handleChange}
-        required
-      />
-      <button type="submit">Save Course</button>
-    </form>
+    <div className="container">
+      <form onSubmit={handleSubmit}>
+        <label>Course Title</label>
+        <input
+          type="text"
+          name="title"
+          placeholder="Enter course title"
+          value={formData.title}
+          onChange={handleChange}
+          required
+        />
+        
+        <label>Description</label>
+        <textarea
+          name="description"
+          placeholder="Enter course description"
+          value={formData.description}
+          onChange={handleChange}
+          required
+        />
+        
+        <label>Category</label>
+        <input
+          type="text"
+          name="category"
+          placeholder="Enter course category"
+          value={formData.category}
+          onChange={handleChange}
+          required
+        />
+        
+        <label>Price ($)</label>
+        <input
+          type="number"
+          name="price"
+          placeholder="Enter course price"
+          value={formData.price}
+          onChange={handleChange}
+          min="0"
+          step="0.01"
+          required
+        />
+        
+        <button type="submit" className="btn">Save Course</button>
+      </form>
+    </div>
   );
 };
 

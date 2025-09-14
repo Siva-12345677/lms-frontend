@@ -39,32 +39,45 @@ const UserList = () => {
 
   return (
     <div>
-      <h2>User Management (Admin)</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map(user => (
-            <tr key={user.id}>
-              <td>{user.id}</td>
-              <td>{user.username}</td>
-              <td>{user.email}</td>
-              <td>{user.role}</td>
-              <td>
-                {/* Add an Edit button here later */}
-                <button onClick={() => handleDelete(user.id)} style={{ marginLeft: '10px' }}>Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="container">
+        <h2>User Management (Admin)</h2>
+        <div className="card">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map(user => (
+                <tr key={user.id}>
+                  <td>{user.id}</td>
+                  <td>{user.username}</td>
+                  <td>{user.email}</td>
+                  <td>
+                    <span className={`badge ${user.role.toLowerCase()}`}>
+                      {user.role}
+                    </span>
+                  </td>
+                  <td>
+                    <button 
+                      onClick={() => handleDelete(user.id)} 
+                      className="btn btn-danger"
+                      style={{ fontSize: '0.8rem', padding: '0.5rem 1rem' }}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };

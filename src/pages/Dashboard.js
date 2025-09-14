@@ -32,31 +32,50 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h2>Dashboard</h2>
-      {role === 'STUDENT' && (
-        <>
-          <h3>My Enrollments</h3>
-          {enrollments.length > 0 ? (
-            <ul>
-              {enrollments.map((enrollment) => (
-                <li key={enrollment.enrollmentId}>
-                  <h4>{enrollment.courseTitle}</h4>
-                  <p>Progress: {enrollment.progressPercentage}%</p>
-                  <p>Last Lesson: {enrollment.lastAccessedLesson}</p>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>You have not enrolled in any courses yet.</p>
+      <div className="container">
+        <h2>Dashboard</h2>
+        
+        <div className="dashboard-grid">
+          {role === 'STUDENT' && (
+            <div className="dashboard-card">
+              <h3>My Enrollments</h3>
+              {enrollments.length > 0 ? (
+                <div className="lesson-list">
+                  {enrollments.map((enrollment) => (
+                    <div key={enrollment.enrollmentId} className="card">
+                      <h4>{enrollment.courseTitle}</h4>
+                      <div className="progress-bar">
+                        <div 
+                          className="progress-fill" 
+                          style={{ width: `${enrollment.progressPercentage}%` }}
+                        ></div>
+                      </div>
+                      <p>Progress: {enrollment.progressPercentage}%</p>
+                      <p>Last Lesson: {enrollment.lastAccessedLesson}</p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p>You have not enrolled in any courses yet.</p>
+              )}
+            </div>
           )}
-        </>
-      )}
-      {role === 'INSTRUCTOR' && (
-        <p>Instructor dashboard view - manage your courses.</p>
-      )}
-      {role === 'ADMIN' && (
-        <p>Admin dashboard view - manage users and content.</p>
-      )}
+          
+          {role === 'INSTRUCTOR' && (
+            <div className="dashboard-card">
+              <h3>Instructor Dashboard</h3>
+              <p>Manage your courses and track student progress.</p>
+            </div>
+          )}
+          
+          {role === 'ADMIN' && (
+            <div className="dashboard-card">
+              <h3>Admin Dashboard</h3>
+              <p>Manage users, courses, and system settings.</p>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

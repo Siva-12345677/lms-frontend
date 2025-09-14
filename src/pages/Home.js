@@ -6,46 +6,37 @@ const Home = () => {
   const { isAuthenticated, role } = useContext(AuthContext);
 
   return (
-    <div style={{ textAlign: 'center', padding: '50px' }}>
-      <h1>Welcome to the Learning Management System (LMS) 🎓</h1>
-      <p>Your platform for managing and taking online courses.</p>
+    <div className="container">
+      <div className="home-hero">
+        <h1>Welcome to the Learning Management System 🎓</h1>
+        <p>Your platform for managing and taking online courses.</p>
       
-      {!isAuthenticated ? (
-        <div style={{ marginTop: '30px' }}>
-          <h3>Get Started</h3>
-          <p>
-            <Link to="/login" style={{ marginRight: '15px', padding: '10px 20px', border: '1px solid blue' }}>
+        {!isAuthenticated ? (
+          <div className="home-actions">
+            <Link to="/login" className="btn">
               Login
             </Link>
-            or
-            <Link to="/signup" style={{ marginLeft: '15px', padding: '10px 20px', border: '1px solid green' }}>
+            <Link to="/signup" className="btn btn-secondary">
               Sign Up
             </Link>
-          </p>
-        </div>
-      ) : (
-        <div style={{ marginTop: '30px' }}>
-          <h3>Quick Links</h3>
-          {role === 'ADMIN' && (
-            <p>
-              <Link to="/admin/users" style={{ padding: '10px 20px', border: '1px solid black' }}>Manage Users</Link>
-            </p>
-          )}
-          {role === 'INSTRUCTOR' && (
-            <p>
-              <Link to="/instructor/courses/create" style={{ padding: '10px 20px', border: '1px solid black' }}>Create a New Course</Link>
-            </p>
-          )}
-          <p>
-            <Link to="/dashboard" style={{ padding: '10px 20px', border: '1px solid black', marginRight: '15px' }}>
+          </div>
+        ) : (
+          <div className="home-actions">
+            {role === 'ADMIN' && (
+              <Link to="/admin/users" className="btn">Manage Users</Link>
+            )}
+            {role === 'INSTRUCTOR' && (
+              <Link to="/instructor/courses/create" className="btn">Create a New Course</Link>
+            )}
+            <Link to="/dashboard" className="btn">
               Go to Dashboard
             </Link>
-            <Link to="/courses" style={{ padding: '10px 20px', border: '1px solid black' }}>
+            <Link to="/courses" className="btn btn-secondary">
               Browse Courses
             </Link>
-          </p>
-        </div>
-      )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

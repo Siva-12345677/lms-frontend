@@ -1,13 +1,16 @@
-.sai{
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-bottom: 50px;
-  padding-top: 50px;
-  border-radius: 20px;
-  width: 200px;
-  color: red;
-  background-color: greenyellow;
+/* App-specific styles */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-h1{
-  align-items: center;
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
+
+/* Remove the old styles that are now handled in index.css */

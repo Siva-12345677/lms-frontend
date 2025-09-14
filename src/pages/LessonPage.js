@@ -40,15 +40,19 @@ const LessonPage = () => {
 
     return (
         <div>
-            <h2>Lessons for Course {courseId}</h2>
-            <ul>
-                {lessons.map(lesson => (
-                    <li key={lesson.id}>
-                        <h4>{lesson.title}</h4>
-                        <p>Duration: {lesson.duration} minutes</p>
-                    </li>
-                ))}
-            </ul>
+            <div className="container">
+                <h2>Lessons for Course {courseId}</h2>
+                <div className="lesson-list">
+                    {lessons.map(lesson => (
+                        <div key={lesson.id} className="lesson-item">
+                            <h4>{lesson.title}</h4>
+                            <div className="lesson-meta">
+                                <span>Duration: {lesson.duration} minutes</span>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 };

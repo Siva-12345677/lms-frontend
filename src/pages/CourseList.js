@@ -54,33 +54,52 @@ const CourseList = () => {
 
   return (
     <div>
-      <h2>Courses</h2>
-      {role === 'INSTRUCTOR' && (
-        <Link to="/instructor/courses/create" style={{ display: 'block', marginBottom: '20px' }}>
-          <button>Add New Course</button>
-        </Link>
-      )}
-      <ul>
-        {courses.map(course => (
-          <li key={course.id} style={{ border: '1px solid #ccc', margin: '10px', padding: '10px' }}>
-            <h3>{course.title}</h3>
-            <p>{course.description}</p>
-            <p>Category: {course.category}</p>
-            <p>Price: ${course.price}</p>
-            <p>Instructor: {course.instructorName}</p>
-            <Link to={`/courses/${course.id}/lessons`} style={{ marginRight: '10px' }}>View Lessons</Link>
-            {role === 'STUDENT' && user && ( // ✅ Corrected: Only show enroll button if user is not null
-              <button onClick={() => handleEnroll(course.id)}>Enroll</button>
-            )}
-            {role === 'INSTRUCTOR' && (
-              <>
-                <Link to={`/instructor/courses/${course.id}/edit`} style={{ marginRight: '10px' }}>Edit</Link>
-                <button onClick={() => handleDelete(course.id)}>Delete</button>
-              </>
-            )}
-          </li>
-        ))}
-      </ul>
+      <div className="container">
+        <h2>Courses</h2>
+        
+        {role === 'INSTRUCTOR' && (
+          <div className="mb-4">
+            <Link to="/instructor/courses/create" className="btn">
+              Add New Course
+            </Link>
+          </div>
+        )}
+        
+        <div className="course-list">
+          {courses.map(course => (
+            <div key={course.id} className="course-item">
+              <h3>{course.title}</h3>
+              <p>{course.description}</p>
+              <div className="course-meta">
+                <span>Category: {course.category}</span>
+                <span className="course-price">${course.price}</span>
+              </div>
+              <p><strong>Instructor:</strong> {course.instructorName}</p>
+              
+              <div className="course-actions">
+                <Link to={`/courses/${course.id}/lessons`} className="btn btn-secondary">
+                  View Lessons
+                </Link>
+                {role === 'STUDENT' && user && (
+                  <button onClick={() => handleEnroll(course.id)} className="btn btn-success">
+                    Enroll
+                  </button>
+                )}
+                {role === 'INSTRUCTOR' && (
+                  <>
+                    <Link to={`/instructor/courses/${course.id}/edit`} className="btn">
+                      Edit
+                    </Link>
+                    <button onClick={() => handleDelete(course.id)} className="btn btn-danger">
+                      Delete
+                    </button>
+                  </>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
