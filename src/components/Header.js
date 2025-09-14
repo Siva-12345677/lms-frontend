@@ -10,12 +10,7 @@ const Header = () => {
       <h1>LMS</h1>
       <nav>
         <Link to="/" style={{ marginRight: '10px' }}>Home</Link>
-        {!isAuthenticated ? (
-          <>
-            <Link to="/login" style={{ marginRight: '10px' }}>Login</Link>
-            <Link to="/signup">Signup</Link>
-          </>
-        ) : (
+        {isAuthenticated && (
           <>
             <Link to="/courses" style={{ marginRight: '10px' }}>Courses</Link>
             <Link to="/dashboard" style={{ marginRight: '10px' }}>Dashboard</Link>
