@@ -502,3 +502,338 @@ tr:hover {
 .gap-2 { gap: 0.5rem; }
 .gap-3 { gap: 1rem; }
 .gap-4 { gap: 1.5rem; }
+/* Login Page Styles */
+.login-container {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  gap: 3rem;
+}
+
+.login-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-header h2 {
+  color: #1e293b;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.login-header p {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.login-form {
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.9rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.875rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  background-color: #f8fafc;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-message {
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 0.875rem;
+  border-radius: 8px;
+  border: 1px solid #fecaca;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.error-icon {
+  font-size: 1.1rem;
+}
+
+.login-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.login-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.login-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.login-btn.loading {
+  pointer-events: none;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.login-divider {
+  text-align: center;
+  margin: 1.5rem 0;
+  position: relative;
+}
+
+.login-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+.login-divider span {
+  background: white;
+  padding: 0 1rem;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.demo-section {
+  margin-bottom: 1.5rem;
+}
+
+.demo-title {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.demo-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.demo-btn {
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  color: #374151;
+  padding: 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.demo-btn:hover:not(:disabled) {
+  border-color: #667eea;
+  background: #f1f5f9;
+  transform: translateY(-1px);
+}
+
+.demo-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.demo-btn.student:hover:not(:disabled) {
+  border-color: #10b981;
+  background: #f0fdf4;
+}
+
+.demo-btn.instructor:hover:not(:disabled) {
+  border-color: #f59e0b;
+  background: #fffbeb;
+}
+
+.demo-btn.admin:hover:not(:disabled) {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.login-footer {
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.login-footer p {
+  margin-bottom: 1rem;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.signup-link {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 0.25rem;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+.help-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.help-link {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s ease;
+}
+
+.help-link:hover {
+  color: #667eea;
+  text-decoration: underline;
+}
+
+/* Student Welcome Section */
+.student-welcome {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  color: white;
+  max-width: 400px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.welcome-content h3 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.student-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.feature-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.feature h4 {
+  color: white;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.feature p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Responsive Design for Login */
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 2rem;
+  }
+  
+  .login-card {
+    padding: 2rem;
+  }
+  
+  .student-welcome {
+    max-width: 100%;
+  }
+  
+  .demo-buttons {
+    flex-direction: column;
+  }
+  
+  .help-links {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
